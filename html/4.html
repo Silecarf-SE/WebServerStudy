@@ -4,7 +4,7 @@
 <head>
 	<!--information  for this document -->
 	<meta charset="utf-8" />
-	<title>JavaScript </title>
+	<title>JSTest </title>
 	<link rel="stylesheet" href="style.css">
 
 </head>
@@ -12,9 +12,14 @@
 <body>
 	<!--contents for page a - anchor = 링크 -->
 	<header>
-		<h1><a href="index.html">WEB</a></h1>
+		<h1><a href="index.html">JSTest</a></h1>
 	</header>
 	<nav>
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script src="colors.js">
+		</script>
+
+		<input id="night_day" type="button" value="day" onclick="nightdayHandler(this);">
 		<strong>Strong Tag</strong>
 		<div id="grid">
 			<!-- Juseok-->
@@ -28,8 +33,31 @@
 			</ol>
 
 			<div id="article">
-				<h2>Grid</h2>
+				<h2>Grid</h2> <!-- onclick 속성에 자바스크립트 코드를 실행한다. -->
+				<input type="button" name="button" value="Hi" onclick="alert('hi')">
+				<input type="text" onchange="alert('changed')" onkeydown="alert('press')">
+				<script type="text/javascript">
+					document.write('hello World');
+					document.write(1 + 1);
+					document.write("<br>");
 
+					function two(j) {
+						document.write("<li>" + j + "</li>");
+
+					}
+					two("list2");
+					two('list1');
+					two("last");
+				</script>
+				<br>
+				1+1
+				<br>
+				<p>
+					라이브러리와 프레임워크의 차이<br>
+					라이브러리는 내가 사용하고자 하는 부품을 가져오는 것<br>
+					프레임웤은 만들고자 하는 것이 있을 때 만들고자 하는것이 무엇이냐에 따라서 언제나 필요한 공통적인 기능들의 총집합(베이스)<br>
+
+				</p>
 				<span>
 					NAVIGATION
 				</span>

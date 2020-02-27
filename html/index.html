@@ -10,11 +10,17 @@
 </head>
 
 <body>
+	<!-- this is css code  -->
 	<!--contents for page a - anchor = 링크 -->
 	<header>
 		<h1><a href="index.html">WEB</a></h1>
 	</header>
 	<nav>
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script src="colors.js">
+		</script>
+		<!-- 자바스크립트 코드이다. 자바스크립트는 HTML을 제어하는 언어다. -->
+		<input id="night_day" type="button" value="day" onclick="nightdayHandler(this)">
 		<div id="grid">
 			<strong>Strong Tag</strong>
 			<!-- Juseok-->
@@ -32,30 +38,46 @@
 				<p>WEB is a computer programming system created by Donald E. Knuth as the first implementation of what he called "literate programming": the idea that one could create software as works of literature, by embedding source code inside
 					descriptive text, rather than the reverse (as is common practice in most programming languages), in an order that is convenient for exposition to human readers, rather than in the order demanded by the compiler.</p>
 
+				<br><br>
+				<img src="https://cdn.pixabay.com/photo/2017/09/13/17/18/dog-2746234_960_720.jpg" width="30%">
+				<p>
+					<iframe width="841" height="473" src="https://www.youtube.com/embed/3cOiXHckids?list=PLJkzZkCj500dVvzSzTE1bhhoT2uqWXuac" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+						allowfullscreen></iframe>
+				</p>
+
+				<table>
+					<tr>
+						<td>head</td>
+						<td>98.1%</td>
+					</tr>
+					<tr>
+						<td>body</td>
+						<td>97.9%</td>
+					</tr>
+					<tr>
+						<td>html</td>
+						<td>97.9</td>
+					</tr>
+				</table>
+
 			</div>
-			<br><br>
-			<img src="https://cdn.pixabay.com/photo/2017/09/13/17/18/dog-2746234_960_720.jpg" width="30%">
-			<p>
-				<iframe width="841" height="473" src="https://www.youtube.com/embed/3cOiXHckids?list=PLJkzZkCj500dVvzSzTE1bhhoT2uqWXuac" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-			</p>
-			<table>
-				<tr>
-					<td>head</td>
-					<td>98.1%</td>
-				</tr>
-				<tr>
-					<td>body</td>
-					<td>97.9%</td>
-				</tr>
-				<tr>
-					<td>html</td>
-					<td>97.9</td>
-				</tr>
-			</table>
 		</div>
 
 	</nav>
-
+	<input id="night_day2" type="button" value="day" onclick="
+	var target = document.querySelector('body');
+	if(this.value==='day'){
+	target.style.backgroundColor='coral';
+	target.style.color='white';
+	this.value='night';
+	document.querySelector('#night_day').value='night';
+}else{
+	target.style.backgroundColor='white';
+	target.style.color='black';
+	this.value='day';
+	document.querySelector('#night_day').value='day';
+}
+	">
 
 
 </body>
