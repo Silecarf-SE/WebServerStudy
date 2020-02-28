@@ -1,96 +1,103 @@
 var http = require('http');
 var fs = require('fs');
 var url = require('url');
+var qs = require('querystring');
 
-var app = http.createServer(function(request, response) {
-      var _url = request.url;
-      var queryData = url.parse(_url, true).query;
-
-      console.log(queryData);
-      var pathname = url.parse(_url, true).pathname;
-      /*if (_url == '/') {
-        title = 'Welcome'
-      }*/
-
-      if (_url == '/favicon.ico') {
-        return response.writeHead(404);
-      }
-      if (pathname === '/') {
-        if (queryData.id === undefined) {
-          fs.readFile(`./${queryData.id}`, 'utf8', function(err, description) {
-            var title = 'welcome';
-            var description2 = 'Hello, node.js';
-            fs.readdir('./', function(error, filelist) {
-              console.log(filelist);
-              var list = '<ul>';
-              var i = 0;
-              while (i < filelist.length) {
-                list = list + `<li><a href="/?id=${filelist[i]}">${filelist[i]}</li>`;
-                i = i + 1;
-              }
-              list= list + '</ul>';
-              var template = `
-      <!doctype html>
-      <html>
-      <head>
-      <title>WEB1 - ${title}</title>
-      <meta charset="utf-8">
-      </head>
-      <body>
-      <h1><a href="/">WEB</a></h1>
-      ${list}
-      <h2>${title}</h2>
-      <p><a href="https://www.w3.org/TR/html5/" target="_blank" title="html5 speicification">Hypertext Markup Language (HTML)</a> is the standard markup language for <strong>creating <u>web</u> pages</strong> and web applications.Web browsers receive HTML documents from a web server or from local storage and render them into multimedia web pages. HTML describes the structure of a web page semantically and originally included cues for the appearance of the document.
-      <img src="coding.jpg" width="100%">
-      </p><p style="margin-top:45px;">
-      ${description2}
-      </p>
-      </body>
-      </html>
-      `;
-              response.writeHead(200);
-              response.end(template);
-            });
-          });
-        } else {
-          fs.readFile(`./${queryData.id}`, 'utf8', function(err, description) {
-            var title = queryData.id;
-            fs.readdir('./', function(error, filelist) {
-              var list = '<ul>';
-              var i = 0;
-              while (i < filelist.length) {
-                list = list + `<li><a href="/?id=${filelist[i]}">${filelist[i]}</li>`;
-                i = i + 1;
-              }
-              list = list + '</ul>';
-              var template = `
-    <!doctype html>
-    <html>
-    <head>
+function templateHTML(title, list, body) {
+  return `
+  <!doctype html>
+  <html>
+  <head>
     <title>WEB1 - ${title}</title>
     <meta charset="utf-8">
-    </head>
-    <body>
+  </head>
+  <body>
     <h1><a href="/">WEB</a></h1>
     ${list}
-    <h2>${title}</h2>
-    <p><a href="https://www.w3.org/TR/html5/" target="_blank" title="html5 speicification">Hypertext Markup Language (HTML)</a> is the standard markup language for <strong>creating <u>web</u> pages</strong> and web applications.Web browsers receive HTML documents from a web server or from local storage and render them into multimedia web pages. HTML describes the structure of a web page semantically and originally included cues for the appearance of the document.
-    <img src="coding.jpg" width="100%">
-    </p><p style="margin-top:45px;">
-    ${description}
-    </p>
-    </body>
-    </html>
-    `;
-              response.writeHead(200);
-              response.end(template);
-            })
-          });
-        }
-      } else {
-          response.writeHead(404);
-          response.end('Not Found');
+    <a href="/create">create</a>
+    ${body}
+  </body>
+  </html>
+  `;
+}
 
-        }
+function templateList(filelist) {
+  var list = '<ul>';
+  var i = 0;
+  while (i < filelist.length) {
+    list = list + `<li><a href="/?id=${filelist[i]}">${filelist[i]}</a></li>`;
+    i = i + 1;
+  }
+  list = list + '</ul>';
+  return list;
+}
+
+var app = http.createServer(function(request, response) {
+  var _url = request.url;
+  var queryData = url.parse(_url, true).query;
+  var pathname = url.parse(_url, true).pathname;
+  if (pathname === '/') {
+    if (queryData.id === undefined) {
+      fs.readdir('./', function(error, filelist) {
+        var title = 'Welcome';
+        var description = 'Hello, Node.js';
+        var list = templateList(filelist);
+        var template = templateHTML(title, list, `<h2>${title}</h2>${description}`);
+        response.writeHead(200);
+        response.end(template);
       });
-      app.listen(2988);
+    } else {
+      fs.readdir('./', function(error, filelist) {
+        fs.readFile(`${queryData.id}`, 'utf8', function(err, description) {
+          var title = queryData.id;
+          var list = templateList(filelist);
+          var template = templateHTML(title, list, `<h2>${title}</h2>${description}`);
+          response.writeHead(200);
+          response.end(template);
+        });
+      });
+    }
+  } else if (pathname === '/create') {
+    fs.readdir('./', function(error, filelist) {
+      var title = 'WEB - create';
+      var list = templateList(filelist);
+      var template = templateHTML(title, list, `
+          <form action="http://192.168.56.102:2988/process_create" method="post">
+            <p><input type="text" name="title" placeholder="title"></p>
+            <p>
+              <textarea name="description" placeholder="description"></textarea>
+            </p>
+            <p>
+              <input type="submit">
+            </p>
+          </form>
+        `);
+      response.writeHead(200);
+      response.end(template);
+    });
+  } else if (pathname === '/process_create') {
+    var body = '';
+    request.on('data', function(data) {
+      body += data;
+
+    });
+    request.on('end', function() {
+      var post = qs.parse(body);
+      var title = post.title;
+      var description = post.description;
+      console.log(post);
+      fs.writeFile(`./${title}`, description, 'utf8', function(err) {
+        response.writeHead(302,{Location:`/?id=${title}`});
+        response.end('success');
+
+      });
+    });
+  } else {
+    response.writeHead(404);
+    response.end('Not found');
+  }
+
+
+
+});
+app.listen(2988);
