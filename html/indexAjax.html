@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!--information  for this document -->
+	<meta charset="utf-8" />
+	<title>WEB</title>
+	<!--중괄호는 선택자 , 중복의제거, html이 정보에 전념하기 위해 html에서 디자인의 기능을 빼온 것이 CSS다.거기에 효율적이다.-->
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<!-- this is css code  -->
+	<!--contents for page a - anchor = 링크 -->
+	<header>
+		<h1><a href="#!welcome">WEB</a></h1>
+	</header>
+	<nav>
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script src="colors.js">
+		</script>
+		<script>
+			function fetchPage(name) {
+				fetch(name).then(function(response) {
+					response.text().then(function(text) {
+						document.querySelector('article').innerHTML = text;
+					})
+				})
+			}
+			if (location.hash) {
+				fetchPage(location.hash.substr(2));
+			} else {
+				fetchPage('welcome');
+			}
+			fetch('list').then(function(response) {
+				response.text().then(function(text) {
+					var items = text.split(','); //쪼개서 배열로 만든다.
+					var i = 0;
+					var tags = '';
+					while (i < items.length) {
+						var item = items[i];
+						item = item.trim(); // 앞뒤의 줄바꿈 같은거 모두 지움
+						var tag = '<li><a href="#!' + item + '" onclick="fetchPage(\'' + item + '\')">' + item + '</a></li>';
+						tags = tags + tag;
+						i = i + 1;
+					}
+					document.querySelector('#nav').innerHTML = tags;
+				})
+			});
+		</script>
+		<!-- 자바스크립트 코드이다. 자바스크립트는 HTML을 제어하는 언어다. -->
+		<input id="night_day" type="button" value="day" onclick="nightdayHandler(this)">
+		<div id="grid">
+			<strong>Strong Tag</strong>
+			<!-- Juseok-->
+			<ol id="nav">
+				<!--ordered list-->
+
+			</ol>
+			<li><a href="box.html">Box</a></li>
+			<li><a href="4.html">Grid</a></li>
+			<div id="article">
+				<article>
+
+				</article>
+
+				<br><br>
+				<img src="https://cdn.pixabay.com/photo/2017/09/13/17/18/dog-2746234_960_720.jpg" width="30%">
+				<p>
+					<iframe width="841" height="473" src="https://www.youtube.com/embed/3cOiXHckids?list=PLJkzZkCj500dVvzSzTE1bhhoT2uqWXuac" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+						allowfullscreen></iframe>
+				</p>
+
+				<table>
+					<tr>
+						<td>head</td>
+						<td>98.1%</td>
+					</tr>
+					<tr>
+						<td>body</td>
+						<td>97.9%</td>
+					</tr>
+					<tr>
+						<td>html</td>
+						<td>97.9</td>
+					</tr>
+				</table>
+
+			</div>
+		</div>
+
+	</nav>
+
+
+</body>
+
+</html>
