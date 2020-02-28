@@ -6,3 +6,9 @@ if(args[2]==='1'){
 }else{
   console.log('False..');
 }
+var testFoler = './';
+var fs = require('fs');
+
+fs.readdir(testFoler,function(err,filelist){
+  console.log(filelist);
+})
