@@ -28,7 +28,7 @@ var app = http.createServer(function(request, response) {
                 list = list + `<li><a href="/?id=${filelist[i]}">${filelist[i]}</li>`;
                 i = i + 1;
               }
-              list = list + '</ul>';
+              list= list + '</ul>';
               var template = `
       <!doctype html>
       <html>
