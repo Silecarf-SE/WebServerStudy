@@ -11,9 +11,9 @@
 			<strong>Strong Tag</strong>
 			<!-- Juseok-->
 			<ol> <!--ordered list-->
-				<li><a href="http://192.168.56.102//page_html.html">wow! JavaScript?</a></li>
-				<li><a href="http://192.168.56.102//page_vc.html">wow! variables and constants</a></li>
-				<li><a href="http://192.168.56.102//page_op.html">wow! operator</a></li>
+				<li><a href="page_html.html">wow! JavaScript?</a></li>
+				<li><a href="page_vc.html">wow! variables and constants</a></li>
+				<li><a href="page_op.html">wow! operator</a></li>
 			</ol>
 			<ul> <!--unordered list-->
 				<li>lina</li>
@@ -30,6 +30,33 @@
 			<span style="font-size:36px;">Coding</span> <!-- this is not title!!! -->
 			<br><img src="NoTitleImg.jpeg" width="30%"><br>
 			<!-- 태그가 이름만으로 부족할때 속성을 부과한다 -->
+			<?php
+				echo date('Y-m-d H:i:s');
+				?>
+				<br />
+				<form action="index.php">
+				<input type="text" name="name" value="" >
+				<input type="submit">
+
+				</form>
+				<?php
+				// data type = boolean, integer, float, string, array, object, callable, iterable, resource, NULL
+				print(1+1);
+				//JS variable = var ? use = ${?}
+				$name = 'YOUYOU!';
+				print($name);
+				echo $_GET['name'];
+			 ?>
+			 <br />
+			 <?php
+			 	$str = "Lorem ipsum dolor sit amet, consection ullamco laboris nisi ut aliquip ex ea
+				commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+				Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+				echo $str;
+				echo strlen($str);
+				echo nl2br($str);
+			  ?>
+
 			<table>
 				<tr>
 					<td>head</td>
