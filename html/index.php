@@ -21,8 +21,8 @@ if(isset($_GET['id'])){
   $article['title']=htmlspecialchars($row['title']);
   $article['description']=htmlspecialchars($row['description']);
   $update_link = '<a href="updateSQL.php?id='.$_GET['id'].'">update</a>';
-   // "" -> {} & \"  , '' -> . & "
-  $delete_link = '<form action="process_deleteSQL.php" method = "post">
+   /* "" -> {} & \"  , '' -> . & " , HTML -> "<?=  ?>" */
+  $delete_link = '<form action="process_deleteSQL.php" method = "post" onsubmit="if(!confirm(\'sure?\')){return false};">
     <input type = "hidden" name="id" value="'.$_GET['id'].'">
     <input type="submit" value="delete">
   </form>';

@@ -1029,3 +1029,129 @@ select host, user, password from user
 200302 19:24:12	   284 Connect	root@localhost as anonymous on opentutorials
 		   284 Query	SELECT * FROM topic
 		   284 Quit	
+200302 19:30:53	   285 Connect	root@localhost as anonymous on opentutorials
+		   285 Query	SELECT * FROM topic
+		   285 Query	SELECT * FROM topic where id = 7
+		   285 Quit	
+		   286 Connect	root@localhost as anonymous on opentutorials
+		   286 Query	SELECT * FROM topic
+		   286 Query	SELECT * FROM topic where id = 8
+		   286 Quit	
+200302 19:30:54	   287 Connect	root@localhost as anonymous on opentutorials
+		   287 Query	SELECT * FROM topic
+		   287 Query	SELECT * FROM topic where id = 7
+		   287 Quit	
+		   288 Connect	root@localhost as anonymous on opentutorials
+		   288 Query	SELECT * FROM topic
+		   288 Query	SELECT * FROM topic where id = 8
+		   288 Quit	
+200302 19:30:55	   289 Connect	root@localhost as anonymous on opentutorials
+		   289 Query	SELECT * FROM topic
+		   289 Query	SELECT * FROM topic where id = 7
+		   289 Quit	
+		   290 Connect	root@localhost as anonymous on opentutorials
+		   290 Query	SELECT * FROM topic
+		   290 Query	SELECT * FROM topic where id = 8
+		   290 Quit	
+200302 19:34:17	   291 Connect	root@localhost as anonymous on opentutorials
+		   291 Query	SELECT * FROM topic
+		   291 Query	SELECT * FROM topic where id = 8
+		   291 Quit	
+200302 19:34:18	   292 Connect	root@localhost as anonymous on opentutorials
+		   292 Query	SELECT * FROM topic
+		   292 Query	SELECT * FROM topic where id = 7
+		   292 Quit	
+200302 19:34:21	   293 Connect	root@localhost as anonymous on opentutorials
+		   293 Query	DELETE FROM topic
+  WHERE
+      id = 7
+		   293 Quit	
+200302 19:34:22	   294 Connect	root@localhost as anonymous on opentutorials
+		   294 Query	SELECT * FROM topic
+		   294 Quit	
+200302 19:35:45	   295 Connect	root@localhost as anonymous on opentutorials
+		   295 Query	SELECT * FROM topic
+		   295 Quit	
+200302 19:35:49	   296 Connect	root@localhost as anonymous on opentutorials
+		   296 Query	INSERT INTO topic(title,description,created)
+        VALUES(
+        'asfdq2',
+        'asdzzz',
+        NOW()
+        )
+		   296 Quit	
+200302 19:35:50	   297 Connect	root@localhost as anonymous on opentutorials
+		   297 Query	SELECT * FROM topic
+		   297 Quit	
+200302 19:35:51	   298 Connect	root@localhost as anonymous on opentutorials
+		   298 Query	SELECT * FROM topic
+		   298 Quit	
+200302 19:35:56	   299 Connect	root@localhost as anonymous on opentutorials
+		   299 Query	INSERT INTO topic(title,description,created)
+        VALUES(
+        'MYSQL',
+        'THIS 짜아ㅉ아ㅉ앙',
+        NOW()
+        )
+		   299 Quit	
+200302 19:35:57	   300 Connect	root@localhost as anonymous on opentutorials
+		   300 Query	SELECT * FROM topic
+		   300 Quit	
+200302 19:35:58	   301 Connect	root@localhost as anonymous on opentutorials
+		   301 Query	SELECT * FROM topic
+		   301 Quit	
+200302 19:36:03	   302 Connect	root@localhost as anonymous on opentutorials
+		   302 Query	INSERT INTO topic(title,description,created)
+        VALUES(
+        'DSZ2',
+        '냬뜨ㄸ',
+        NOW()
+        )
+		   302 Quit	
+200302 19:36:04	   303 Connect	root@localhost as anonymous on opentutorials
+		   303 Query	SELECT * FROM topic
+		   303 Quit	
+200302 19:36:05	   304 Connect	root@localhost as anonymous on opentutorials
+		   304 Query	SELECT * FROM topic
+		   304 Query	SELECT * FROM topic where id = 12
+		   304 Quit	
+200302 19:36:07	   305 Connect	root@localhost as anonymous on opentutorials
+		   305 Query	DELETE FROM topic
+  WHERE
+      id = 12
+		   305 Quit	
+200302 19:36:09	   306 Connect	root@localhost as anonymous on opentutorials
+		   306 Query	SELECT * FROM topic
+		   306 Quit	
+200302 19:36:43	   307 Connect	root@localhost as anonymous on opentutorials
+		   307 Query	SELECT * FROM topic
+		   307 Query	SELECT * FROM topic where id = 11
+		   307 Quit	
+200302 19:36:57	   308 Connect	root@localhost as anonymous on opentutorials
+		   308 Query	SELECT * FROM topic
+		   308 Query	SELECT * FROM topic where id = 11
+		   308 Quit	
+		   309 Connect	root@localhost as anonymous on opentutorials
+		   309 Query	SELECT * FROM topic
+		   309 Query	SELECT * FROM topic where id = 11
+		   309 Quit	
+200302 19:37:00	   310 Connect	root@localhost as anonymous on opentutorials
+		   310 Query	SELECT * FROM topic
+		   310 Query	SELECT * FROM topic where id = 11
+		   310 Quit	
+200302 19:37:02	   311 Connect	root@localhost as anonymous on opentutorials
+		   311 Query	SELECT * FROM topic
+		   311 Query	SELECT * FROM topic where id = 8
+		   311 Quit	
+200302 19:37:04	   312 Connect	root@localhost as anonymous on opentutorials
+		   312 Query	SELECT * FROM topic
+		   312 Query	SELECT * FROM topic where id = 13
+		   312 Quit	
+200302 19:37:05	   313 Connect	root@localhost as anonymous on opentutorials
+		   313 Query	DELETE FROM topic
+  WHERE
+      id = 13
+		   313 Quit	
+200302 19:37:07	   314 Connect	root@localhost as anonymous on opentutorials
+		   314 Query	SELECT * FROM topic
+		   314 Quit	
