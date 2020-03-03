@@ -12,7 +12,6 @@ $article = array(
   'description'=>'Hello WEB'
 );
 $update_link = '';
-$delete_link = '';
 if(isset($_GET['id'])){
   $filtered_id = mysqli_real_escape_string($conn,$_GET['id']);
   $sql = "SELECT * FROM topic where id = {$filtered_id}";
@@ -20,12 +19,7 @@ if(isset($_GET['id'])){
   $row = mysqli_fetch_array($res);
   $article['title']=htmlspecialchars($row['title']);
   $article['description']=htmlspecialchars($row['description']);
-  $update_link = '<a href="updateSQL.php?id='.$_GET['id'].'">update</a>';
-   // "" -> {} & \"  , '' -> . & "
-  $delete_link = '<form action="process_deleteSQL.php" method = "post">
-    <input type = "hidden" name="id" value="'.$_GET['id'].'">
-    <input type="submit" value="delete">
-  </form>';
+  $update_link = '<a href="updateSQL.php?id='.$_GET['id'].'">update</a>'; // "" -> {} & \"  , '' -> . & "
 }
 ?>
 
@@ -40,12 +34,13 @@ if(isset($_GET['id'])){
     <h1><a href="index.php">WEB</a></h1>
     <ol>
       <?=$list?>
-
     </ol>
-     <a href="createSQL.php">create</a>
-     <?=$update_link?>
-     <?=$delete_link?>
-      <h2><?=$article['title']?></h2>
-      <?=$article['description']?>
+    <form action="process_updateSQL.php" method="post">
+      <input type="hidden" name="id" value="<?=$_GET['id']?>">
+      <p><input type="text" name="title" placeholder="title" value="<?=$article['title']?>"> </p>
+      <p><textarea name="description" rows="8" cols="80" placeholder="description"><?=$article['description']?></textarea></p>
+      <p><input type="submit"> </p>
+
+    </form>
   </body>
 </html>
